@@ -3,18 +3,24 @@ import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import Form from 'react-bootstrap/Form';
 import PropTypes from 'prop-types';
-//TODO Pass in saved prices and set as default for textboxes
-//TODO save new prices to editor
+
 class SpotPriceSettingsCard extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      silverSpotPrice: 0.0,
-      goldSpotPrice: 0.0,
-      platinumSpotPrice: 0.0,
-      palladiumSpotPrice: 0.0,
+      silverSpotPrice: this.props.silverSpotPrice
+        ? this.props.silverSpotPrice
+        : 0.0,
+      goldSpotPrice: this.props.goldSpotPrice ? this.props.goldSpotPrice : 0.0,
+      platinumSpotPrice: this.props.platinumSpotPrice
+        ? this.props.platinumSpotPrice
+        : 0.0,
+      palladiumSpotPrice: this.props.palladiumSpotPrice
+        ? this.props.palladiumSpotPrice
+        : 0.0,
     };
     this.handleInputChange = this.handleInputChange.bind(this);
+    this.moneyValidation = this.moneyValidation.bind(this);
   }
   handleInputChange(event) {
     const target = event.target;
@@ -26,14 +32,17 @@ class SpotPriceSettingsCard extends Component {
       },
       () =>
         this.props.updateSpotPrices(
-          this.state.silverSpotPrice,
-          this.state.goldSpotPrice,
-          this.state.platinumSpotPrice,
-          this.state.palladiumSpotPrice
+          this.moneyValidation(this.state.silverSpotPrice),
+          this.moneyValidation(this.state.goldSpotPrice),
+          this.moneyValidation(this.state.platinumSpotPrice),
+          this.moneyValidation(this.state.palladiumSpotPrice)
         )
     );
   }
-
+  //TODO: Do input validation here and return 0 if bad
+  moneyValidation(value) {
+    return parseFloat(value);
+  }
   render() {
     return (
       <Row>
@@ -94,4 +103,8 @@ export default SpotPriceSettingsCard;
 
 SpotPriceSettingsCard.propTypes = {
   updateSpotPrices: PropTypes.func,
+  silverSpotPrice: PropTypes.number,
+  goldSpotPrice: PropTypes.number,
+  platinumSpotPrice: PropTypes.number,
+  palladiumSpotPrice: PropTypes.number,
 };

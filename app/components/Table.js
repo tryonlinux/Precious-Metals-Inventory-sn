@@ -32,7 +32,16 @@ function DefaultColumnFilter({
 DefaultColumnFilter.propTypes = {
   column: PropTypes.object,
 };
-function Table({ columns, data }) {
+
+function Table({
+  columns,
+  data,
+  updateSpotPrice,
+  silverSpotPrice,
+  goldSpotPrice,
+  platinumSpotPrice,
+  palladiumSpotPrice,
+}) {
   const filterTypes = React.useMemo(
     () => ({
       // Add a new fuzzyTextFilterFn filter type.
@@ -107,7 +116,14 @@ function Table({ columns, data }) {
           <strong>Your Precious Metal Inventory</strong>
         </div>
 
-        <Dashboard inventory={data} />
+        <Dashboard
+          inventory={data}
+          updateSpotPrice={updateSpotPrice}
+          silverSpotPrice={silverSpotPrice}
+          goldSpotPrice={goldSpotPrice}
+          platinumSpotPrice={platinumSpotPrice}
+          palladiumSpotPrice={palladiumSpotPrice}
+        />
         <br></br>
         <BSTable responsive striped bordered hover {...getTableProps()}>
           <thead>
@@ -196,6 +212,11 @@ function Table({ columns, data }) {
 Table.propTypes = {
   columns: PropTypes.array,
   data: PropTypes.array,
+  updateSpotPrice: PropTypes.func,
+  silverSpotPrice: PropTypes.number,
+  goldSpotPrice: PropTypes.number,
+  platinumSpotPrice: PropTypes.number,
+  palladiumSpotPrice: PropTypes.number,
 };
 
 export default Table;

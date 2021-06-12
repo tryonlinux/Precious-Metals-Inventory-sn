@@ -7,11 +7,6 @@ class InventoryList extends Component {
   constructor(props) {
     super(props);
     this.cellFunction = this.cellFunction.bind(this);
-    this.viewEditPictures = this.viewEditPictures.bind(this);
-  }
-
-  viewEditPictures(id) {
-    alert('Not yet Implemented. ID: ' + id);
   }
 
   // This is a custom UI for our 'between' or number range
@@ -141,8 +136,14 @@ class InventoryList extends Component {
           {
             Header: 'Purity',
             accessor: 'purity',
-            // Use our custom `fuzzyText` filter on this column
-            filter: 'fuzzyText',
+            Filter: this.SelectColumnFilter,
+            filter: 'includes',
+          },
+          {
+            Header: 'Ounces',
+            accessor: 'ounces',
+            Filter: this.NumberRangeColumnFilter,
+            filter: 'between',
           },
           {
             Header: 'Name',
@@ -175,7 +176,7 @@ class InventoryList extends Component {
             filter: 'includes',
           },
           {
-            Header: 'purchased Spot Price',
+            Header: 'Purchased Spot Price',
             accessor: 'purchasedSpotPrice',
             sortDescFirst: true,
 
@@ -195,7 +196,15 @@ class InventoryList extends Component {
       <div>Please Click plus button to add Inventory</div>
     ) : (
       <div>
-        <Table columns={columns} data={this.props.inventory} />
+        <Table
+          columns={columns}
+          data={this.props.inventory}
+          updateSpotPrice={this.props.updateSpotPrice}
+          silverSpotPrice={this.props.silverSpotPrice}
+          goldSpotPrice={this.props.goldSpotPrice}
+          platinumSpotPrice={this.props.platinumSpotPrice}
+          palladiumSpotPrice={this.props.palladiumSpotPrice}
+        />
       </div>
     );
   }
@@ -208,4 +217,9 @@ InventoryList.propTypes = {
   handleSaveInventory: PropTypes.func,
   updateInventory: PropTypes.func,
   deleteInventory: PropTypes.func,
+  updateSpotPrice: PropTypes.func,
+  silverSpotPrice: PropTypes.number,
+  goldSpotPrice: PropTypes.number,
+  platinumSpotPrice: PropTypes.number,
+  palladiumSpotPrice: PropTypes.number,
 };
