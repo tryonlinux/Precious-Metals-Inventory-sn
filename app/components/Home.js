@@ -19,6 +19,10 @@ const initialState = {
     inventory: [],
     locations: [],
     metals: [],
+    silverSpotPrice: 0.0,
+    goldSpotPrice: 0.0,
+    platinumSpotPrice: 0.0,
+    palladiumSpotPrice: 0.0,
   },
 };
 
@@ -45,6 +49,8 @@ export default class Home extends React.Component {
     this.displayEditForm = this.displayEditForm.bind(this);
     this.deleteInventoryItem = this.deleteInventoryItem.bind(this);
     this.onAddInventory = this.onAddInventory.bind(this);
+    this.updateMetalSpotPricesState =
+      this.updateMetalSpotPricesState.bind(this);
     //TODO add form for adding new locations
   }
 
@@ -79,6 +85,12 @@ export default class Home extends React.Component {
               inventory: entries[0].data.inventory,
               locations: entries[0].data.locations,
               metals: entries[0].data.metals,
+              silverSpotPrice: parseFloat(entries[0].data.silverSpotPrice),
+              goldSpotPrice: parseFloat(entries[0].data.goldSpotPrice),
+              platinumSpotPrice: parseFloat(entries[0].data.platinumSpotPrice),
+              palladiumSpotPrice: parseFloat(
+                entries[0].data.palladiumSpotPrice
+              ),
             },
           });
         } else {
@@ -112,6 +124,44 @@ export default class Home extends React.Component {
     });
   };
 
+  updateMetalSpotPricesState(
+    silverSpotPrice,
+    goldSpotPrice,
+    platinumSpotPrice,
+    palladiumSpotPrice
+  ) {
+    this.setState(
+      (prevState) => {
+        let data = {
+          ...prevState.data,
+          silverSpotPrice,
+          goldSpotPrice,
+          platinumSpotPrice,
+          palladiumSpotPrice,
+        };
+
+        data = { ...data };
+        return {
+          data,
+        };
+      },
+      () =>
+        this.saveNote([
+          {
+            data: {
+              inventory: this.state.data.inventory,
+              locations: this.state.data.locations,
+              metals: this.state.data.metals,
+              silverSpotPrice: this.state.data.silverSpotPrice,
+              goldSpotPrice: this.state.data.goldSpotPrice,
+              platinumSpotPrice: this.state.data.platinumSpotPrice,
+              palladiumSpotPrice: this.state.data.palladiumSpotPrice,
+            },
+          },
+        ])
+    );
+  }
+
   saveNote(entries) {
     this.editorKit.onEditorValueChanged(JSON.stringify(entries));
   }
@@ -137,6 +187,10 @@ export default class Home extends React.Component {
           inventory: this.state.data.inventory,
           locations: this.state.data.locations,
           metals: this.state.data.metals,
+          silverSpotPrice: this.state.data.silverSpotPrice,
+          goldSpotPrice: this.state.data.goldSpotPrice,
+          platinumSpotPrice: this.state.data.platinumSpotPrice,
+          palladiumSpotPrice: this.state.data.palladiumSpotPrice,
         },
       },
     ]);
@@ -145,6 +199,7 @@ export default class Home extends React.Component {
   addInventory(
     id,
     purity,
+    ounces,
     name,
     location,
     metal,
@@ -157,6 +212,7 @@ export default class Home extends React.Component {
     data.inventory.push({
       id,
       purity,
+      ounces,
       name,
       location,
       metal,
@@ -171,6 +227,7 @@ export default class Home extends React.Component {
   updateInventory(
     id,
     purity,
+    ounces,
     name,
     location,
     metal,
@@ -186,6 +243,7 @@ export default class Home extends React.Component {
     inventory.push({
       id,
       purity,
+      ounces,
       name,
       location,
       metal,
@@ -283,6 +341,11 @@ export default class Home extends React.Component {
                     deleteInventory={this.deleteInventoryItem}
                     handleSaveInventory={this.saveInventory}
                     updateInventory={this.displayEditForm}
+                    updateSpotPrice={this.updateMetalSpotPricesState}
+                    silverSpotPrice={this.state.data.silverSpotPrice}
+                    goldSpotPrice={this.state.data.goldSpotPrice}
+                    platinumSpotPrice={this.state.data.platinumSpotPrice}
+                    palladiumSpotPrice={this.state.data.palladiumSpotPrice}
                   />
                 </div>
               )

@@ -9,6 +9,7 @@ import { v4 as uuidv4 } from 'uuid';
 const initialState = {
   id: '',
   purity: '',
+  ounces: '',
   itemName: '',
   location: '',
   metal: '',
@@ -29,6 +30,7 @@ class InventoryItem extends Component {
       this.state = {
         id: currentInventoryItem.id,
         purity: currentInventoryItem.purity,
+        ounces: currentInventoryItem.ounces,
         itemName: currentInventoryItem.name,
         location: currentInventoryItem.location,
         metal: currentInventoryItem.metal,
@@ -46,7 +48,6 @@ class InventoryItem extends Component {
     }
     this.handleInputChange = this.handleInputChange.bind(this);
   }
-  //TODO add validators for fields to prevent errors in graph and calculations
   handleInputChange(event) {
     const target = event.target;
     const name = target.name;
@@ -75,6 +76,18 @@ class InventoryItem extends Component {
                   placeholder="Purity"
                   name="purity"
                   value={this.state.purity}
+                  onChange={this.handleInputChange}
+                />
+              </Form.Group>
+            </Col>
+            <Col>
+              <Form.Group controlId="ounces">
+                <Form.Label>Ounces (ex: 1.5)</Form.Label>
+                <Form.Control
+                  type="text"
+                  placeholder="Ounces"
+                  name="ounces"
+                  value={this.state.ounces}
                   onChange={this.handleInputChange}
                 />
               </Form.Group>
@@ -194,6 +207,7 @@ class InventoryItem extends Component {
                   this.props.handleSubmit(
                     this.state.id ? this.state.id : uuidv4(),
                     this.state.purity,
+                    this.state.ounces,
                     this.state.itemName,
                     this.state.location,
                     this.state.metal,

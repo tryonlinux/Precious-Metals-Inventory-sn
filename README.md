@@ -11,6 +11,8 @@ An extension editor for [Standard Notes ](https://standardnotes.org) to keep tra
 - [ ] Publish to listed.to
 - [ ] Ability to edit locations
 - [ ] API call to get spot price on either editor load or button click
+- [ ] Add card for purchasedSpotPrice over purchased price
+- [ ] Validators on inventory item to make sure everything is legit
 
 ## Build/Modify
 
