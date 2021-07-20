@@ -54,7 +54,7 @@ class SpotPriceSettingsCard extends Component {
               placeholder="Silver"
               name="silverSpotPrice"
               value={this.state.silverSpotPrice}
-              onChange={this.handleInputChange}
+              onBlur={this.handleInputChange}
             />
           </Form.Group>
         </Col>
@@ -66,7 +66,7 @@ class SpotPriceSettingsCard extends Component {
               placeholder="Gold"
               name="goldSpotPrice"
               value={this.state.goldSpotPrice}
-              onChange={this.handleInputChange}
+              onBlur={this.handleInputChange}
             />
           </Form.Group>
         </Col>
@@ -78,7 +78,7 @@ class SpotPriceSettingsCard extends Component {
               placeholder="Platinum"
               name="platinumSpotPrice"
               value={this.state.platinumSpotPrice}
-              onChange={this.handleInputChange}
+              onBlur={this.handleInputChange}
             />
           </Form.Group>
         </Col>
@@ -90,7 +90,7 @@ class SpotPriceSettingsCard extends Component {
               placeholder="Palladium"
               name="palladiumSpotPrice"
               value={this.state.palladiumSpotPrice}
-              onChange={this.handleInputChange}
+              onBlur={this.handleInputChange}
             />
           </Form.Group>
         </Col>
