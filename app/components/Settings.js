@@ -21,6 +21,12 @@ class Settings extends Component {
       [name]: value,
     });
   }
+  deleteLocation() {
+    this.props.deleteLocation(this.state.settingSelected);
+    this.setState({
+      settingSelected: this.props.locations[this.state.locations][0],
+    });
+  }
   addNewLocation() {
     this.props.addNewLocation(this.state.addValue);
     this.setState({
@@ -42,19 +48,13 @@ class Settings extends Component {
                   onChange={this.handleInputChange}
                   value={this.state.settingSelected}
                 >
-                  <option key={-1}> </option>
                   {this.props.locations.map((row) => (
                     <option key={row} value={row}>
                       {row}
                     </option>
                   ))}
                 </Form.Control>
-                <Button
-                  variant="danger"
-                  onClick={() =>
-                    this.props.deleteLocation(this.state.settingSelected)
-                  }
-                >
+                <Button variant="danger" onClick={() => this.deleteLocation()}>
                   Delete Selected Location
                 </Button>
               </Form.Group>
