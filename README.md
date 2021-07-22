@@ -2,6 +2,10 @@
 
 An extension editor for [Standard Notes ](https://standardnotes.org) to keep track of what precious metals you have and their values.
 
+## Demo
+![](https://github.com/tryonlinux/Precious-Metals-Inventory-sn/blob/4ba4eb304a103a051f4b7fc9aeb79c504f7eb69d/Precious%20Metal%20Inventory.gif)
+
+
 ## Install
 
 - link to listed published url be posted later
