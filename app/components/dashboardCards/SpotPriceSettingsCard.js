@@ -21,22 +21,22 @@ class SpotPriceSettingsCard extends Component {
     };
     this.handleInputChange = this.handleInputChange.bind(this);
     this.moneyValidation = this.moneyValidation.bind(this);
+    this.updateSpots = this.updateSpots.bind(this);
   }
   handleInputChange(event) {
     const target = event.target;
     const name = target.name;
     const value = target.value;
-    this.setState(
-      {
-        [name]: value,
-      },
-      () =>
-        this.props.updateSpotPrices(
-          this.moneyValidation(this.state.silverSpotPrice),
-          this.moneyValidation(this.state.goldSpotPrice),
-          this.moneyValidation(this.state.platinumSpotPrice),
-          this.moneyValidation(this.state.palladiumSpotPrice)
-        )
+    this.setState({
+      [name]: value,
+    });
+  }
+  updateSpots() {
+    this.props.updateSpotPrices(
+      this.moneyValidation(this.state.silverSpotPrice),
+      this.moneyValidation(this.state.goldSpotPrice),
+      this.moneyValidation(this.state.platinumSpotPrice),
+      this.moneyValidation(this.state.palladiumSpotPrice)
     );
   }
   //TODO: Do input validation here and return 0 if bad
@@ -54,7 +54,8 @@ class SpotPriceSettingsCard extends Component {
               placeholder="Silver"
               name="silverSpotPrice"
               value={this.state.silverSpotPrice}
-              onBlur={this.handleInputChange}
+              onChange={this.handleInputChange}
+              onBlur={this.updateSpots}
             />
           </Form.Group>
         </Col>
@@ -66,7 +67,8 @@ class SpotPriceSettingsCard extends Component {
               placeholder="Gold"
               name="goldSpotPrice"
               value={this.state.goldSpotPrice}
-              onBlur={this.handleInputChange}
+              onChange={this.handleInputChange}
+              onBlur={this.updateSpots}
             />
           </Form.Group>
         </Col>
@@ -78,7 +80,8 @@ class SpotPriceSettingsCard extends Component {
               placeholder="Platinum"
               name="platinumSpotPrice"
               value={this.state.platinumSpotPrice}
-              onBlur={this.handleInputChange}
+              onChange={this.handleInputChange}
+              onBlur={this.updateSpots}
             />
           </Form.Group>
         </Col>
@@ -90,7 +93,8 @@ class SpotPriceSettingsCard extends Component {
               placeholder="Palladium"
               name="palladiumSpotPrice"
               value={this.state.palladiumSpotPrice}
-              onBlur={this.handleInputChange}
+              onChange={this.handleInputChange}
+              onBlur={this.updateSpots}
             />
           </Form.Group>
         </Col>
