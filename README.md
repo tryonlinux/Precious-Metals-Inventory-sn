@@ -5,6 +5,10 @@ An extension editor for [Standard Notes ](https://standardnotes.org) to keep tra
 ## Demo
 ![](https://github.com/tryonlinux/Precious-Metals-Inventory-sn/blob/4ba4eb304a103a051f4b7fc9aeb79c504f7eb69d/Precious%20Metal%20Inventory.gif)
 
+## Support
+
+[Buy me a Coffee](https://www.buymeacoffee.com/tryomas)
+
 
 ## Install
 
