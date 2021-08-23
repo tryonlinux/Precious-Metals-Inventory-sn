@@ -12,11 +12,10 @@ An extension editor for [Standard Notes ](https://standardnotes.org) to keep tra
 
 ## Install
 
-- link to listed published url be posted later
+Install Link: https://listed.to/p/g9mnXIOTma
 
 ## To-Do
 
-- [ ] Publish to listed.to
 - [ ] Ability to edit locations
 - [ ] API call to get spot price on either editor load or button click
 - [ ] Add card for purchasedSpotPrice over purchased price
