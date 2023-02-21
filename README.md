@@ -12,7 +12,7 @@ An extension editor for [Standard Notes ](https://standardnotes.org) to keep tra
 
 ## Install
 
-Install Link: https://listed.to/p/g9mnXIOTma
+Install Link: https://listed.to/p/QA0LXyiXuC
 
 ## To-Do
 
