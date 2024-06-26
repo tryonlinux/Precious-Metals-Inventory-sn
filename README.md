@@ -1,4 +1,4 @@
-# Previous-Metals-Inventory-sn
+# Previous-Metals-Inventory-sn -- Archived, feel free to fork and self-host 
 
 An extension editor for [Standard Notes ](https://standardnotes.org) to keep track of what precious metals you have and their values.
 
